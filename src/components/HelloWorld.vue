@@ -1,10 +1,10 @@
-<docs>
+<!-- <docs>
 ---
 title: Hello
 slug: home
 ---
 <h1>Hello world!</h1>
-</docs>
+</docs> -->
 
 <template>
 1111
