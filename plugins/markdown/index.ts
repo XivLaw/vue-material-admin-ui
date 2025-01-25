@@ -15,7 +15,7 @@ export default (...arg): Plugin => {
     name: 'mdToVue',
     transform(code, id) {
       if (id.endsWith('.md')) {
-        console.log(md.render(code))
+        // console.log(md.render(code))
         return {
           code: `<template>${md.render(code)}</template>`,
           map: null

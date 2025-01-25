@@ -1,15 +1,18 @@
+import { fileURLToPath, URL } from 'node:url'
+
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import docs from './plugins/docs'
-import markdown from './plugins/markdown'
+import vueJsx from '@vitejs/plugin-vue-jsx'
+import vueDevTools from 'vite-plugin-vue-devtools'
 
-// https://vitejs.dev/config/
+import docs from './plugins/docs'
+
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [
-    docs(),
-    markdown(),
-    vue({
-      include: [/\.vue$/, /\.md$/],
-    })
-  ]
+  plugins: [docs(), vue(), vueJsx(), vueDevTools()],
+  resolve: {
+    alias: {
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
 })
