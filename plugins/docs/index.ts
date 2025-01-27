@@ -8,20 +8,16 @@ export default (): Plugin => {
     transform(code, id) {
       if (id.endsWith('.vue')) {
         const { script, template, style, docs } = getCode(code)
-        console.log(docs)
-        const content = (
-          docs
-            ? `
-\`\`\`vue
-${template}
-${script}
-${style}
-\`\`\`
-`
-            : code
-        )?.trim()
-        console.log(content)
-        // mdToVue(content)
+        // console.log(getCode(code))
+        let content = `
+          ${script}
+          ${template}
+          ${style}
+        `
+        content = content.trim()
+        if (docs) {
+          console.log(mdToVue(docs))
+        }
         return {
           code: content,
           map: null,
